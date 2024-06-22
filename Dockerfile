@@ -16,7 +16,7 @@ COPY . .
 RUN npm install
 
 # Make port 80 available to the world outside this container
-EXPOSE 80
+EXPOSE 50117
 
 # Define environment variable, optional based on your app's need
 ENV NAME World
