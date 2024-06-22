@@ -1,9 +1,14 @@
 # Use the specific version of node as the base image
 FROM node:16
 
-# Install OpenJDK-17
-RUN apt-get update && \
-    apt-get install -y openjdk-17-jre && \
+# Install necessary tools
+RUN apt-get update && apt-get install -y wget gnupg
+
+# Install OpenJDK 17 manually
+RUN wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | apt-key add - && \
+    echo "deb https://adoptopenjdk.jfrog.io/adoptopenjdk/deb buster main" | tee /etc/apt/sources.list.d/adoptopenjdk.list && \
+    apt-get update && \
+    apt-get install -y adoptopenjdk-17-hotspot && \
     apt-get clean;
 
 # Set the working directory in the container to /usr/src/app
