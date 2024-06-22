@@ -1,9 +1,9 @@
 # Use the specific version of node as the base image
 FROM node:16
 
-# Install OpenJDK-11
+# Install OpenJDK-17
 RUN apt-get update && \
-    apt-get install -y openjdk-11-jre && \
+    apt-get install -y openjdk-17-jre && \
     apt-get clean;
 
 # Set the working directory in the container to /usr/src/app
@@ -22,4 +22,4 @@ EXPOSE 50117
 ENV NAME World
 
 # Run index.js when the container launches
-CMD ["node", "index.js"]
+CMD ["java", "-jar", "Lavalink.jar"]
