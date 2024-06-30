@@ -1,8 +1,0 @@
-version: '1.0'
-services:
-  web:
-    image: 'railway/node:16'
-    buildScript: 'npm install'
-    runScript: 'npm start'
-    env:
-      NODE_ENV: production
